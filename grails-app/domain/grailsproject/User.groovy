@@ -20,10 +20,10 @@ class User implements Serializable {
 
     String username
     String password
-    /*String firstName
+    String firstName
     String lastName
     String email
-    String confirmPassword*/
+    String confirmPassword
 
 
 	Set<Role> getAuthorities() {
@@ -48,15 +48,20 @@ class User implements Serializable {
 
 	static constraints = {
 		password blank: false, password: true
-		username blank: false, unique: true
-	}
-
-    /*static constraints = {
+		username blank: false,  size:5..20, unique: true
         firstName blank:false
         lastName  blank:false
+        confirmPassword blank:false, password: true
         email blank:false, unique:true, email:true
-        username  blank:false, size:5..20, matches:/[\S]+/, unique:true
-        password  blank:false, size:8..15, matches:/[\S]+/, validator:{ val, obj ->
+	}
+
+   /* static constraints = {
+        firstName blank:false
+        lastName  blank:false
+        confirmPassword blank:false, password: true
+        email blank:false, unique:true, email:true
+       // username  blank:false, size:5..20, unique:true
+        password  blank:false, password: true, size:8..15, validator:{ val, obj ->
             if (obj.password != obj.confirmPassword)
                 return 'user.password.dontmatch'
         }
