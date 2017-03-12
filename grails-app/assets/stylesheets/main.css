@@ -84,13 +84,17 @@ img {
 }
 
 .footer {
-    background: #48802c;
+    background: #33BFBF;
     color: #000;
     clear: both;
     font-size: 0.8em;
     margin-top: 1.5em;
     padding: 1em;
     min-height: 1em;
+    width:100%;
+    position:fixed;
+    bottom:0px;
+    left:0px;
 }
 
 .footer a {
@@ -139,7 +143,7 @@ img {
 }
 
 .nav a:active, .nav a:visited {
-    color: #666666;
+    color: white;
 }
 
 .nav a:focus, .nav a:hover {
@@ -174,7 +178,7 @@ img {
 }
 
 .nav li.dropdown.open ul.dropdown-menu {
-    background-color: #4D8618;
+    background-color: #33BFBF;
 }
 
 /* CREATE/EDIT FORMS AND SHOW PAGES */
@@ -561,7 +565,7 @@ a.skip {
 }
 
 .grails-logo-container {
-    background:#79b94c no-repeat 50% 30%;
+    background:#34DADA no-repeat 50% 30%;
     margin-bottom: 20px;
     color: white;
     height:300px;
@@ -569,6 +573,7 @@ a.skip {
 }
 
 img.grails-logo {
+    width: 1300px;
     height:340px;
     margin-top:-10px;
 }
