@@ -14,11 +14,11 @@
             <sec:ifNotLoggedIn>
                 <li><g:link controller='user' action='create'>Criar conta</g:link></li>
                 <li><g:link controller='login'>Entrar</g:link></li>
-                </sec:ifNotLoggedIn>
-                <sec:ifLoggedIn>
-                    <li><g:link controller='user' action='edit'>Editar informações</g:link></li>
-                    <li><g:link controller='user' action='delete'>Deletar conta</g:link></li>
-                </sec:ifLoggedIn>
+            </sec:ifNotLoggedIn>
+            <sec:ifLoggedIn>
+                <li><g:link controller='user' action='edit' id='${sec.loggedInUserInfo(field: 'id')}'>Editar informações</g:link></li>
+                <li><g:link controller='user' action='delete' id='${sec.loggedInUserInfo(field: 'id')}'>Deletar conta</g:link></li>
+            </sec:ifLoggedIn>
             </ul>
             <sec:ifLoggedIn>
                 <li><g:link controller='logout'>Sair</g:link></li>
