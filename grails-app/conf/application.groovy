@@ -2,9 +2,9 @@
 
 // Added by the Spring Security Core plugin:
 grails.plugins.springsecurity.auth.loginFormUrl = '/'
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'grailsproject.SecUser'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'grailsproject.SecUserSecRole'
-grails.plugin.springsecurity.authority.className = 'grailsproject.SecRole'
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'grailsproject.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'grailsproject.UserRole'
+grails.plugin.springsecurity.authority.className = 'grailsproject.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/',               access: ['permitAll']],
 	[pattern: '/error',          access: ['permitAll']],
@@ -30,9 +30,9 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 grails.plugin.springsecurity.logout.postOnly = false
 
 // Added by the Spring Security Core plugin:
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'org.example.SecUser'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'org.example.SecUserSecRole'
-grails.plugin.springsecurity.authority.className = 'org.example.SecRole'
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'org.example.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'org.example.UserRole'
+grails.plugin.springsecurity.authority.className = 'org.example.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/',               access: ['permitAll']],
 	[pattern: '/error',          access: ['permitAll']],
@@ -58,9 +58,9 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 
 
 // Added by the Spring Security Core plugin:
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'org.example.SecUser'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'org.example.SecUserSecRole'
-grails.plugin.springsecurity.authority.className = 'org.example.SecRole'
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'org.example.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'org.example.UserRole'
+grails.plugin.springsecurity.authority.className = 'org.example.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/',               access: ['permitAll']],
 	[pattern: '/error',          access: ['permitAll']],
@@ -86,9 +86,9 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 
 
 // Added by the Spring Security Core plugin:
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'grailsproject.SecUser'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'grailsproject.SecUserSecRole'
-grails.plugin.springsecurity.authority.className = 'grailsproject.SecRole'
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'grailsproject.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'grailsproject.UserRole'
+grails.plugin.springsecurity.authority.className = 'grailsproject.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/',               access: ['permitAll']],
 	[pattern: '/error',          access: ['permitAll']],
@@ -114,9 +114,9 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 
 
 // Added by the Spring Security Core plugin:
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'grailsproject.SecUser'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'grailsproject.SecUserSecRole'
-grails.plugin.springsecurity.authority.className = 'grailsproject.SecRole'
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'grailsproject.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'grailsproject.UserRole'
+grails.plugin.springsecurity.authority.className = 'grailsproject.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/',               access: ['permitAll']],
 	[pattern: '/error',          access: ['permitAll']],

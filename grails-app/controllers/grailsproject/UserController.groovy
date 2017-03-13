@@ -4,25 +4,32 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
 @Transactional(readOnly = true)
 class UserController {
 
+    def springSecurityService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    @Secured(['ROLE_ADMIN', 'IS_AUTHENTICATED_REMEMBERED'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond User.list(params), model:[userCount: User.count()]
     }
 
+    @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def show(User user) {
-        respond user
-    }
+        if(user?.id == springSecurityService.currentUser.id ){
+            respond user
+        }else{
+            respond springSecurityService.currentUser
+        }    }
 
+    @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def create() {
         respond new User(params)
     }
 
+    @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     @Transactional
     def save(User user) {
         if (user == null) {
@@ -39,9 +46,6 @@ class UserController {
 
         user.save flush:true
 
-        //def roleUser = Role.findByName('ROLE_USER')
-        //UserRole.create user, roleUser, true
-
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), user.id])
@@ -51,10 +55,16 @@ class UserController {
         }
     }
 
+    @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def edit(User user) {
-        respond user
+        if(user?.id == springSecurityService.currentUser.id ){
+            respond user
+        }else{
+            respond springSecurityService.currentUser
+        }
     }
 
+    @Secured(['ROLE_USER', 'IS_AUTHENTICATED_REMEMBERED'])
     @Transactional
     def update(User user) {
         if (user == null) {
@@ -80,6 +90,7 @@ class UserController {
         }
     }
 
+    @Secured(['ROLE_USER', 'IS_AUTHENTICATED_REMEMBERED'])
     @Transactional
     def delete(User user) {
 
