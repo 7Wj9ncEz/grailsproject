@@ -2,9 +2,9 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>Paradigmas</title>
+    <title>Biblioteca</title>
 
-    <asset:link rel="icon" href="group-of-people-icon.png" type="image/x-ico" />
+    <asset:link rel="icon" href="book1.png" type="image/x-ico" />
 </head>
 <body>
     <content tag="nav">
@@ -36,8 +36,8 @@
     <div id="content" role="main">
         <section class="row colset-2-its">
             <h1>Seja bem-vindo!</h1>
-            <p> Participe desta rede social para interegir com seus amigos! </p>
-            <p>Você pode compartilhar informações em sua página e acessar a dos seus amigos. </p>
+            <p> Aqui você pode procurar os livros que deseja utilizar, verificar o status do seu empréstimo, entre outras opções! </p>
+            <p>"A leitura engrandece a alma." - Voltaire </p>
             <p>Aproveite! </p>
         </section>
     </div>

@@ -42,8 +42,9 @@ pre {
 }
 .grails-icon img {
     width: 40px;
-
+    border-radius: 50%;
 }
+
 .navbar-default, .navbar-static-top {
     background-color: #33BFBF;
     border: 0px;

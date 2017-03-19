@@ -25,8 +25,8 @@
                 </button>
                 <a class="navbar-brand" href="/#">
                     <i class="fa grails-icon">
-                        <asset:image src="icon-bird.png"/>
-                    </i> Twitter
+                        <asset:image src="books.jpg"/>
+                    </i> Biblioteca
                 </a>
             </div>
             <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
