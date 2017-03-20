@@ -22,7 +22,8 @@ class UserController {
             respond user
         }else{
             respond springSecurityService.currentUser
-        }    }
+        }    
+    }
 
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def create() {

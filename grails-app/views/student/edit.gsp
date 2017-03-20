@@ -29,7 +29,14 @@
             <g:form resource="${this.student}" method="PUT">
                 <g:hiddenField name="version" value="${this.student?.version}" />
                 <fieldset class="form">
-                    <f:all bean="student"/>
+                    <f:input bean="student" property="matriculation" class="form-control" placeholder="Matrícula do Aluno"/>
+                    <f:input bean="student" property="firstName" class="form-control" placeholder="Primeiro Nome"/>
+                    <f:input bean="student" property="lastName" class="form-control" placeholder="Sobrenome"/>
+                    <f:input bean="student" property="degree" class="form-control" placeholder="Curso da Gradução"/>
+                    <f:input bean="student" property="semester" class="form-control" placeholder="Semestre"/>
+                    <f:input bean="student" property="email" class="form-control" placeholder="E-mail"/>
+                    <f:input bean="student" property="username" class="form-control" placeholder="Nome de usuário"/>
+                    <f:input bean="student" property="password" class="form-control" placeholder="Senha"/>
                 </fieldset>
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />

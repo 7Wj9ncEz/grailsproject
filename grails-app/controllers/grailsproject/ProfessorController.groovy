@@ -4,26 +4,34 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
 @Transactional(readOnly = true)
 class ProfessorController {
 
+    def springSecurityService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    @Secured(['ROLE_ADMIN', 'IS_AUTHENTICATED_REMEMBERED'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Professor.list(params), model:[professorCount: Professor.count()]
     }
 
+    @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def show(Professor professor) {
-        respond professor
+        if(professor?.id == springSecurityService.currentUser.id ){
+            respond professor
+        }else{
+            respond springSecurityService.currentUser
+        }
     }
 
+    @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def create() {
         respond new Professor(params)
     }
 
     @Transactional
+    @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def save(Professor professor) {
         if (professor == null) {
             transactionStatus.setRollbackOnly()
@@ -48,11 +56,17 @@ class ProfessorController {
         }
     }
 
+    @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def edit(Professor professor) {
-        respond professor
+        if(professor?.id == springSecurityService.currentUser.id ){
+            respond professor
+        }else{
+            respond springSecurityService.currentUser
+        }
     }
 
     @Transactional
+    @Secured(['ROLE_USER', 'IS_AUTHENTICATED_REMEMBERED'])
     def update(Professor professor) {
         if (professor == null) {
             transactionStatus.setRollbackOnly()
@@ -78,6 +92,7 @@ class ProfessorController {
     }
 
     @Transactional
+    @Secured(['ROLE_USER', 'IS_AUTHENTICATED_REMEMBERED'])
     def delete(Professor professor) {
 
         if (professor == null) {

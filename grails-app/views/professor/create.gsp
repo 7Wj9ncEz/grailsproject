@@ -27,7 +27,13 @@
             </g:hasErrors>
             <g:form action="save">
                 <fieldset class="form">
-                    <f:all bean="professor"/>
+                    <!--<f:all bean="professor"/>-->
+                    <f:input bean="professor" property="professorIdentifier" class="form-control" placeholder="Matrícula do Professor"/>
+                    <f:input bean="professor" property="firstName" class="form-control" placeholder="Primeiro Nome"/>
+                    <f:input bean="professor" property="lastName" class="form-control" placeholder="Sobrenome"/>
+                    <f:input bean="professor" property="email" class="form-control" placeholder="E-mail"/>
+                    <f:input bean="professor" property="username" class="form-control" placeholder="Nome de usuário"/> 
+                    <f:input bean="professor" property="password" class="form-control" placeholder="Senha"/>
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

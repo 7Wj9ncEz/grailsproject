@@ -12,7 +12,8 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Opções<span class="caret"></span></a>
             <ul class="dropdown-menu">
             <sec:ifNotLoggedIn>
-                <li><g:link controller='user' action='create'>Criar conta</g:link></li>
+                <li><g:link controller='professor' action='create'>Criar conta de <b>Professor</b></g:link></li>
+                <li><g:link controller='student' action='create'>Criar conta de <b>Aluno</b></g:link></li>
                 <li><g:link controller='login'>Entrar</g:link></li>
             </sec:ifNotLoggedIn>
             <sec:ifLoggedIn>
