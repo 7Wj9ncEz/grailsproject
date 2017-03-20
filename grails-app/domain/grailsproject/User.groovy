@@ -23,15 +23,13 @@ class User implements Serializable {
     String firstName
     String lastName
     String email
-    String confirmPassword
-
 
 	Set<Role> getAuthorities() {
 		UserRole.findAllByUser(this)*.role
 	}
 
 	def beforeInsert() {
-		encodePassword()
+			encodePassword()
 	}
 
 	def beforeUpdate() {
@@ -51,21 +49,8 @@ class User implements Serializable {
 		username blank: false,  size:5..20, unique: true
         firstName blank:false
         lastName  blank:false
-        confirmPassword blank:false, password: true
         email blank:false, unique:true, email:true
 	}
-
-   /* static constraints = {
-        firstName blank:false
-        lastName  blank:false
-        confirmPassword blank:false, password: true
-        email blank:false, unique:true, email:true
-       // username  blank:false, size:5..20, unique:true
-        password  blank:false, password: true, size:8..15, validator:{ val, obj ->
-            if (obj.password != obj.confirmPassword)
-                return 'user.password.dontmatch'
-        }
-    }*/
 
 	static mapping = {
 		password column: '`password`'
