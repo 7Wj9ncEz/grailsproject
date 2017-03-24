@@ -8,6 +8,8 @@ class Book {
   Integer numberPages;
   String edition;
 
+	static belongsTo = [publisher: Publisher]
+
 	static constraints = {
     name blank: false, maxSize: 200
     area blank: false, maxSize: 40, inList:["Humanas", "Exatas", "Biológicas"]
