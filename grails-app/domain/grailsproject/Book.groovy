@@ -10,9 +10,10 @@ class Book {
 
 	static constraints = {
     name blank: false, maxSize: 200
-    area blank: false, maxSize: 40
+    area blank: false, maxSize: 40, inList:["Humanas", "Exatas", "Biológicas"]
     year blank: false
     edition blank: false
+
   }
 
 }
