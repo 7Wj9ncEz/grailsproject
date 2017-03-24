@@ -2,6 +2,9 @@ package grailsproject
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import grails.plugin.springsecurity.annotation.Secured
+
+@Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
 
 @Transactional(readOnly = true)
 class AuthorController {
