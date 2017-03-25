@@ -29,7 +29,18 @@
             <g:form resource="${this.course}" method="PUT">
                 <g:hiddenField name="version" value="${this.course?.version}" />
                 <fieldset class="form">
-                    <f:all bean="course"/>
+                  <div class="input">
+                    <label for="course.name">Name:</label>
+                    <g:textField name="course.name" value="${this.course.name}" />
+                  </div>
+                  <div class="input">
+                    <label for="course.books">Books:</label>
+                    <g:select multiple="multiple" optionKey="id" name="course.books" value="${this.course.books}" from="${books}" noSelection="['':'-Choose books-']" />
+                  </div>
+                  <div class="input">
+                    <label>Professor:</label>
+                    <g:select optionKey="id" name="course.professor" value="${this.course.professor.id}" from="${professors}" noSelection="['':'-Choose a Professor-']" />
+                  </div> 
                 </fieldset>
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />

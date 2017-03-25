@@ -50,7 +50,7 @@ class CourseController {
     }
 
     def edit(Course course) {
-        respond course
+        respond course, model:[professors:Professor.list(), books:Book.list()]
     }
 
     @Transactional
