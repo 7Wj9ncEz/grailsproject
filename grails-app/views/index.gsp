@@ -15,6 +15,7 @@
                 <li><g:link controller='professor' action='create'>Criar conta de <b>Professor</b></g:link></li>
                 <li><g:link controller='student' action='create'>Criar conta de <b>Aluno</b></g:link></li>
                 <li><g:link controller='libraryStaff' action='create'>Criar conta de <b>Funcionário</b></g:link></li>
+                <li><g:link controller='Reservation' action='create'>Realizar Reserva </g:link></li>
                 <li><g:link controller='login'>Entrar</g:link></li>
             </sec:ifNotLoggedIn>
             <sec:ifLoggedIn>
