@@ -4,14 +4,13 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-//@Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
 @Transactional(readOnly = true)
 class LibraryStaffController {
 
     def springSecurityService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    @Secured(['ROLE_ADMIN', 'IS_AUTHENTICATED_REMEMBERED'])
+    @Secured(['ROLE_STAFF', 'IS_AUTHENTICATED_REMEMBERED'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond LibraryStaff.list(params), model:[libraryStaffCount: LibraryStaff.count()]
@@ -19,7 +18,11 @@ class LibraryStaffController {
 
     @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def show(LibraryStaff libraryStaff) {
-        respond libraryStaff
+        if(libraryStaff?.id == springSecurityService.currentUser.id ){
+            respond libraryStaff
+        }else{
+            respond springSecurityService.currentUser
+        }  
     }
 
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
@@ -42,7 +45,8 @@ class LibraryStaffController {
             return
         }
 
-        libraryStaff.save flush:true
+        def staff = libraryStaff.save flush:true
+        UserRole.create staff, Role.findByAuthority('ROLE_STAFF')
 
         request.withFormat {
             form multipartForm {
@@ -55,11 +59,15 @@ class LibraryStaffController {
 
     @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def edit(LibraryStaff libraryStaff) {
-        respond libraryStaff
+        if(libraryStaff?.id == springSecurityService.currentUser.id ){
+            respond libraryStaff
+        }else{
+            respond springSecurityService.currentUser
+        }
     }
 
     @Transactional
-    @Secured(['ROLE_USER', 'IS_AUTHENTICATED_REMEMBERED'])
+    @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def update(LibraryStaff libraryStaff) {
         if (libraryStaff == null) {
             transactionStatus.setRollbackOnly()
@@ -73,7 +81,8 @@ class LibraryStaffController {
             return
         }
 
-        libraryStaff.save flush:true
+        def staff = libraryStaff.save flush:true
+        UserRole.create staff, Role.findByAuthority('ROLE_STAFF')
 
         request.withFormat {
             form multipartForm {
@@ -85,7 +94,7 @@ class LibraryStaffController {
     }
 
     @Transactional
-    @Secured(['ROLE_USER', 'IS_AUTHENTICATED_REMEMBERED'])
+    @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def delete(LibraryStaff libraryStaff) {
 
         if (libraryStaff == null) {

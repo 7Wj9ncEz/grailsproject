@@ -10,7 +10,7 @@ class UserController {
     def springSecurityService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    @Secured(['ROLE_ADMIN', 'IS_AUTHENTICATED_REMEMBERED'])
+    @Secured(['ROLE_STAFF', 'IS_AUTHENTICATED_REMEMBERED'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond User.list(params), model:[userCount: User.count()]
@@ -66,8 +66,8 @@ class UserController {
         }
     }
 
-    @Secured(['ROLE_USER', 'IS_AUTHENTICATED_REMEMBERED'])
     @Transactional
+    @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def update(User user) {
         if (user == null) {
             transactionStatus.setRollbackOnly()
@@ -92,7 +92,7 @@ class UserController {
         }
     }
 
-    @Secured(['ROLE_USER', 'IS_AUTHENTICATED_REMEMBERED'])
+    @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     @Transactional
     def delete(User user) {
 

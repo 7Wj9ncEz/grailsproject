@@ -68,7 +68,7 @@ class ProfessorController{
     }
 
     @Transactional
-    @Secured(['ROLE_USER', 'IS_AUTHENTICATED_REMEMBERED'])
+    @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def update(Professor professor) {
         if (professor == null) {
             transactionStatus.setRollbackOnly()
@@ -95,7 +95,7 @@ class ProfessorController{
     }
 
     @Transactional
-    @Secured(['ROLE_USER', 'IS_AUTHENTICATED_REMEMBERED'])
+    @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def delete(Professor professor) {
 
         if (professor == null) {
