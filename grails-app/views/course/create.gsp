@@ -25,13 +25,22 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
-            <g:form action="save">
-                <fieldset class="form">
-                    <f:all bean="course"/>
-                </fieldset>
-                <fieldset class="buttons">
-                    <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-                </fieldset>
+           <g:form controller="course" action="save" method="post">
+              <div class="input">
+                <label for="course.name">Name:</label>
+                <g:textField name="course.name" />
+              </div>
+              <div class="input">
+                <label for="course.books">Books:</label>
+                <g:select multiple="multiple" optionKey="id" name="course.books" from="${books}" noSelection="['':'-Choose books-']" />
+              </div>
+              <div class="input">
+                <label>Professor:</label>
+                <g:select optionKey="id" name="course.professor" from="${professors}" noSelection="['':'-Choose a Professor-']" />/>
+              </div> 
+              <div class="input">
+                <g:submitButton name="Create" value="Create" />
+              </div>
             </g:form>
         </div>
     </body>

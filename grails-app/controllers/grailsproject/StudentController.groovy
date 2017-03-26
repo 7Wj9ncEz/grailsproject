@@ -5,12 +5,12 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Transactional(readOnly = true)
-class StudentController {
+class StudentController{
 
     def springSecurityService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    @Secured(['ROLE_ADMIN', 'IS_AUTHENTICATED_REMEMBERED'])
+    @Secured(['ROLE_STAFF', 'IS_AUTHENTICATED_REMEMBERED'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Student.list(params), model:[studentCount: Student.count()]
@@ -45,7 +45,8 @@ class StudentController {
             return
         }
 
-        student.save flush:true
+        def studentt = student.save flush:true
+        UserRole.create studentt, Role.findByAuthority('ROLE_STUDENT')
 
         request.withFormat {
             form multipartForm {
@@ -80,7 +81,8 @@ class StudentController {
             return
         }
 
-        student.save flush:true
+        def studentt = student.save flush:true
+        UserRole.create studentt, Role.findByAuthority('ROLE_STUDENT')
 
         request.withFormat {
             form multipartForm {
@@ -101,6 +103,7 @@ class StudentController {
             return
         }
 
+        student.addToAuthorities(studentRole)
         student.delete flush:true
 
         request.withFormat {

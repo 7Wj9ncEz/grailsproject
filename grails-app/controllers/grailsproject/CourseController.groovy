@@ -20,11 +20,12 @@ class CourseController {
     }
 
     def create() {
-        respond new Course(params)
+        [books:Book.list(), professors:Professor.list()]
     }
 
     @Transactional
-    def save(Course course) {
+    def save() {
+        def course = new Course(params.course)
         if (course == null) {
             transactionStatus.setRollbackOnly()
             notFound()
@@ -49,7 +50,7 @@ class CourseController {
     }
 
     def edit(Course course) {
-        respond course
+        respond course, model:[professors:Professor.list(), books:Book.list()]
     }
 
     @Transactional

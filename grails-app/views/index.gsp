@@ -23,6 +23,7 @@
                 <li><g:link controller='user' action='delete' id='${sec.loggedInUserInfo(field: 'id')}'>Deletar conta</g:link></li>
             </sec:ifLoggedIn>
             </ul>
+            <li><g:link controller='book' action='index'>Acervo da biblioteca</g:link></li>
             <sec:ifLoggedIn>
                 <li><g:link controller='logout'>Sair</g:link></li>
             </sec:ifLoggedIn>

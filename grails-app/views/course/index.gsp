@@ -18,7 +18,22 @@
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:table collection="${courseList}" />
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td>Books</td>
+                </tr>
+                <g:each in="${courseList}" var="course">
+                <tr>
+                    <td><g:link action="show" id="${course.id}">${course.name}</g:link></td>
+                    <td>
+                        <g:each in="${course.books}" var="book">
+                            <g:link controller="book" action="show" id="${book.id}">${book.name}</g:link>
+                        </g:each>
+                    </td>
+                </tr>
+                </g:each>        
+            </table>
 
             <div class="pagination">
                 <g:paginate total="${courseCount ?: 0}" />
