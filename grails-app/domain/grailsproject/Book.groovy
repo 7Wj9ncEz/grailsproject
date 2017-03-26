@@ -18,4 +18,7 @@ class Book {
 
   }
 
+  String toString() {
+    return "Name: " + name + " - " + "Edition: " + edition
+  }
 }

@@ -11,4 +11,8 @@ class Professor extends User{
 		professorIdentifier blank:false, unique:true, minSize:9, maxSize: 9;
 	}
 
+	String toString() {
+		return this.firstName + " " + this.lastName
+	}
+
 }
