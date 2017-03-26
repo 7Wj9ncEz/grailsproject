@@ -2,15 +2,16 @@ package grailsproject
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import grails.plugin.springsecurity.*
 import grails.plugin.springsecurity.annotation.Secured
 
 @Transactional(readOnly = true)
-class ProfessorController {
+class ProfessorController{
 
     def springSecurityService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    @Secured(['ROLE_ADMIN', 'IS_AUTHENTICATED_REMEMBERED'])
+    @Secured(['ROLE_STAFF', 'IS_AUTHENTICATED_REMEMBERED'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Professor.list(params), model:[professorCount: Professor.count()]
@@ -45,7 +46,8 @@ class ProfessorController {
             return
         }
 
-        professor.save flush:true
+        def professorr = professor.save flush:true
+        UserRole.create professorr, Role.findByAuthority('ROLE_PROFESSOR')
 
         request.withFormat {
             form multipartForm {
@@ -80,7 +82,8 @@ class ProfessorController {
             return
         }
 
-        professor.save flush:true
+        def professorr = professor.save flush:true
+        UserRole.create professorr, Role.findByAuthority('ROLE_PROFESSOR')
 
         request.withFormat {
             form multipartForm {

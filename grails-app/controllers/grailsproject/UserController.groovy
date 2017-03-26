@@ -45,6 +45,7 @@ class UserController {
             return
         }
 
+        user.addToAuthorities(professorRole)
         user.save flush:true
 
         request.withFormat {
