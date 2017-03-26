@@ -19,7 +19,11 @@
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:display bean="libraryStaff" />
+            Nome: <f:display bean="libraryStaff" property="firstName" class="form-control" /><br>
+            Sobrenome: <f:display bean="libraryStaff" property="lastName" class="form-control" /><br>
+            Username: <f:display bean="libraryStaff" property="username" class="form-control" /><br>
+            Email: <f:display bean="libraryStaff" property="email" class="form-control" /><br>
+            Trabalho: <f:display bean="libraryStaff" property="jobTitle" class="form-control" /><br>
             <g:form resource="${this.libraryStaff}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.libraryStaff}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
