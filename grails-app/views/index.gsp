@@ -19,7 +19,7 @@
                 <li><g:link controller='login'>Entrar</g:link></li>
             </sec:ifNotLoggedIn>
             <sec:ifLoggedIn>
-                <li><g:link controller='user' action='edit' id='${sec.loggedInUserInfo(field: 'id')}'>Editar informações</g:link></li>
+                <li><g:link controller='professor' action='edit' id='${sec.loggedInUserInfo(field: 'id')}'>Editar informações</g:link></li>
                 <li><g:link controller='user' action='delete' id='${sec.loggedInUserInfo(field: 'id')}'>Deletar conta</g:link></li>
             </sec:ifLoggedIn>
             </ul>

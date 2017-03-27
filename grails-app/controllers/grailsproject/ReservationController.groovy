@@ -19,12 +19,7 @@ class ReservationController {
 
     @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def show(Reservation reservation) {
-        if(reservation?.user.id == springSecurityService.currentUser.id ){
             respond reservation
-        }else{
-            userId = springSecurityService.currentUser.id
-            respond reservation.user.userId
-        }
     }
 
     @Secured(['ROLE_STAFF', 'IS_AUTHENTICATED_REMEMBERED'])
@@ -60,12 +55,7 @@ class ReservationController {
 
     @Secured(['ROLE_STAFF', 'ROLE_STUDENT', 'IS_AUTHENTICATED_REMEMBERED'])
     def edit(Reservation reservation) {
-        if(reservation?.user.id == springSecurityService.currentUser.id ){
             respond reservation
-        }else{
-            userId = springSecurityService.currentUser.id
-            respond reservation.user.userId
-        }
     }
 
     @Transactional
