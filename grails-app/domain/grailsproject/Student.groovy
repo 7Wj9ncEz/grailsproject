@@ -4,7 +4,6 @@ class Student extends User{
 
 	String matriculation;
 	Integer semester;
-	boolean canBorrow = true;
 	String degree;
 
 	static constraints = {

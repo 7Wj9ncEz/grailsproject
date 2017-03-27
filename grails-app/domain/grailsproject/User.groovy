@@ -16,6 +16,7 @@ class User implements Serializable {
 	boolean accountExpired = false
 	boolean accountLocked = false
 	boolean passwordExpired = false
+	boolean canBorrow = true
 
 
     String username

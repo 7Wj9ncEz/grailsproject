@@ -3,7 +3,6 @@ package grailsproject
 class Professor extends User{
 
 	String professorIdentifier;
-	boolean canBorrow = true;
 	
 	static hasMany = [courses:Course]
 
