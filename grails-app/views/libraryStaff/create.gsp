@@ -27,12 +27,13 @@
             </g:hasErrors>
             <g:form action="save">
                 <fieldset class="form">
+                    <f:input bean="libraryStaff" property="employeeID" class="form-control" placeholder="matricula"/>
                     <f:input bean="libraryStaff" property="jobTitle" class="form-control"/>
-                    <f:input bean="user" property="firstName" class="form-control" placeholder="Primeiro Nome"/>
-                    <f:input bean="user" property="lastName" class="form-control" placeholder="Sobrenome"/>
-                    <f:input bean="user" property="email" class="form-control" placeholder="E-mail"/>
-                    <f:input bean="user" property="username" class="form-control" placeholder="Nome de usuário"/>
-                    <f:input bean="user" property="password" class="form-control" placeholder="Senha"/>
+                    <f:input bean="libraryStaff" property="firstName" class="form-control" placeholder="Primeiro Nome"/>
+                    <f:input bean="libraryStaff" property="lastName" class="form-control" placeholder="Sobrenome"/>
+                    <f:input bean="libraryStaff" property="email" class="form-control" placeholder="E-mail"/>
+                    <f:input bean="libraryStaff" property="username" class="form-control" placeholder="Nome de usuário"/>
+                    <f:input bean="libraryStaff" property="password" class="form-control" placeholder="Senha"/>
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
